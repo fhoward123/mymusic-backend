@@ -6,7 +6,7 @@ const album_controller = require('../controllers/album_controller');
 
 /// album ROUTES ///
 
-// GET catalog home page. (Maps to '/collection/')
+// GET collection home page. (Maps to '/collection/')
 router.get('/', album_controller.index);
 
 // GET request for creating a album. NOTE This must come before routes that display album (uses id).

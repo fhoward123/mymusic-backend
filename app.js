@@ -68,6 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/sessions', sessionsRouter);
 // This is prepended to all of the paths defined in the catalog module.
 // e.g., to access a list of albums, the URL will be: /collection/albums/.
 app.use('/collection', collectionRouter);
