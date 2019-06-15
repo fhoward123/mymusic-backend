@@ -9,7 +9,7 @@ const user_controller = require('../controllers/users_controller');
 
 /* GET users listing. */
 // GET request for list of all users.
-router.get('/albums', users_controller.user_list);
+router.get('/albums', user_controller.user_list);
 
 // router.get('/', function(req, res, next) {
 //     res.send('Response from "users" route');
