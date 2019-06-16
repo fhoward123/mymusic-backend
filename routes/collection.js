@@ -9,23 +9,23 @@ const album_controller = require('../controllers/album_controller');
 // GET collection home page. (Maps to '/collection/')
 router.get('/', album_controller.index);
 
-// GET request for creating a album. NOTE This must come before routes that display album (uses id).
-router.get('/albums/create', album_controller.album_create_get);
+// // GET request for creating a album. NOTE This must come before routes that display album (uses id).
+// router.get('/albums/create', album_controller.album_create_get);
 
 // POST request for creating album.
-router.post('/albums/create', album_controller.album_create_post);
+router.post('/albums/', album_controller.album_create);
 
-// GET request to delete album.
-router.get('/albums/:id/delete', album_controller.album_delete_get);
+// DELETE request to delete album.
+router.delete('/albums/:id/', album_controller.album_delete);
 
-// POST request to delete album.
-router.post('/albums/:id/delete', album_controller.album_delete_post);
+// // POST request to delete album.
+// router.post('/albums/:id/delete', album_controller.album_delete_post);
 
-// GET request to update album.
-router.get('/albums/:id/update', album_controller.album_update_get);
+// // GET request to update album.
+// router.get('/albums/:id/update', album_controller.album_update_get);
 
 // POST request to update album.
-router.post('/albums/:id/update', album_controller.album_update_post);
+router.put('/albums/:id/', album_controller.album_update);
 
 // GET request for one album.
 router.get('/albums/:id', album_controller.album_item);

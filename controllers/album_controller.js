@@ -15,35 +15,53 @@ exports.album_list = function(req, res) {
 
 // Display detail page for a specific album.
 exports.album_item = function(req, res) {
-    res.send('NOT IMPLEMENTED: album item: ' + req.params.id);
-};
-
-// Display album create form on GET.
-exports.album_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: album create GET');
+    // res.send('NOT IMPLEMENTED: album item: ' + req.params.id);
+    Album.find({}, (err, foundAlbum) => {
+        console.log('album_list: ', foundAlbum)
+        // Data is returned in array.  Only one item searched so
+        // only need first item in array which is the album object
+        res.json(foundAlbum[0]);
+    });
 };
 
 // Handle album create on POST.
-exports.album_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: album create POST');
+exports.album_create = function(req, res) {
+    // res.send('NOT IMPLEMENTED: album create POST');
+    console.log('Add new album: ', req.body);
+    Album.create(req.body, function(error, createdAlbum) {
+        if (error) {
+            console.log('Error in album controller: POST: ', error.message);
+        }
+        else {
+            res.json(createdAlbum);
+        }
+    });
 };
 
 // Display album delete form on GET.
-exports.album_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: album delete GET');
+exports.album_delete = function(req, res) {
+    // res.send('NOT IMPLEMENTED: album delete GET');
+    console.log('Delete album: ', req.params.id);
+    Album.findByIdAndDelete(req.params.id, function(error, deletedAlbum) {
+        if (error) {
+            console.log('Error in album controller: DELETE: ', error.message);
+        }
+        else {
+            res.json(deletedAlbum);
+        }
+    });
 };
 
-// Handle album delete on POST.
-exports.album_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: album delete POST');
-};
-
-// Display album update form on GET.
-exports.album_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: album update GET');
-};
-
-// Handle album update on POST.
-exports.album_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: album update POST');
+// Handle album update on PUT.
+exports.album_update = function(req, res) {
+    // res.send('NOT IMPLEMENTED: album update PUT');
+    console.log('Edit album: ', req.params.id);
+    Album.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(error, editedAlbum) {
+        if (error) {
+            console.log('Error in album controller: PUT: ', error.message);
+        }
+        else {
+            res.json(editedAlbum);
+        }
+    });
 };

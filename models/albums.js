@@ -19,7 +19,7 @@ const albumSchema = Schema({
     media: String,
     yearMFG: Number,
     yearReleased: Number,
-    barcode: Number,
+    barcode: String,
     songs: [
         {
             title: String,
