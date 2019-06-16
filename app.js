@@ -88,7 +88,7 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-//404 error
+// 404 error (This will catch any route that doesn't exist)
 app.get('*', (req, res) => {
     res.status(404).json('DOH!, page not found')
 })
