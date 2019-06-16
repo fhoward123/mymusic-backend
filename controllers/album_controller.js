@@ -6,12 +6,16 @@ exports.index = function(req, res, next) {
 
 // Display list of all albums.
 exports.album_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: album list');
+    // res.send('NOT IMPLEMENTED: album list');
+    Album.find({}, (err, foundAlbums) => {
+        console.log('album_list: ', foundAlbums)
+        res.json(foundAlbums);
+    });
 };
 
 // Display detail page for a specific album.
-exports.album_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: album detail: ' + req.params.id);
+exports.album_item = function(req, res) {
+    res.send('NOT IMPLEMENTED: album item: ' + req.params.id);
 };
 
 // Display album create form on GET.
