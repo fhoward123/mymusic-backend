@@ -5,7 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-require('dotenv').config()
+require('dotenv').config();
+const morgan = require('morgan');
 
 // Define routes
 const indexRouter = require('./routes/index');
@@ -37,7 +38,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true },
 // Error / Disconnection
 db.on('error', err => console.log(err.message + ' is Mongod not running?'))
 db.on('disconnected', () => console.log('mongo disconnected'))
-
+app.use(morgan('tiny'));
 ///////////////////////////////////
 //          Middleware
 ///////////////////////////////////
@@ -57,14 +58,14 @@ app.use(session({
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+// app.use(morgan('tiny'));
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use(morgan('tiny'));
 // Setup routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
