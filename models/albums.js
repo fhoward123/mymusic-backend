@@ -18,6 +18,7 @@ const albumSchema = Schema({
     runtime: String,
     media: String,
     yearMFG: Number,
+    countryMFG: String,
     yearReleased: {
         type: Number,
         min: 1600,
