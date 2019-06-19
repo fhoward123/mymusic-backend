@@ -14,21 +14,13 @@ const albumSchema = Schema({
     imageURL: String,
     genre: String,
     label: String,
-    trackCnt: Number,
+    trackCnt: String,
     runtime: String,
     media: String,
-    yearMFG: Number,
+    yearMFG: String,
     countryMFG: String,
-    yearReleased: {
-        type: Number,
-        min: 1600,
-        max: 2040
-    },
-    barcode: {
-        type: String,
-        minlength: 12,
-        maxlength: 12
-    },
+    yearReleased: String,
+    barcode: String,
     songs: [
         {
             title: String,
